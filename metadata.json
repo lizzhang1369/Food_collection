@@ -1,0 +1,7 @@
+{
+  "name": "Meal Moments 美食瞬间",
+  "description": "一个可爱卡通风格的餐食分享小程序，记录你的美味生活。",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

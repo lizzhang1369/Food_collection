@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --color-chick-yellow: #FFD93D;
+  --color-orange-warm: #FF8400;
+  --color-soft-white: #FFF7E9;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-soft-white text-stone-800;
+  }
+}
+
+@utility cartoon-border {
+  @apply border-4 border-stone-800 shadow-[4px_4px_0px_0px_rgba(41,37,36,1)];
+}
+
+@utility cartoon-button {
+  @apply cartoon-border bg-chick-yellow px-6 py-2 rounded-full font-bold active:translate-y-1 active:shadow-none transition-all;
+}
+
+@utility cartoon-card {
+  @apply cartoon-border bg-white p-4 rounded-3xl;
+}
