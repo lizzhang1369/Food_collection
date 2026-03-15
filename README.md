@@ -8,7 +8,7 @@ A lightweight web app for sharing and tracking your recent meals. Add a dish wit
 - Ratings: deliciousness, difficulty, prep time
 - Filters: category (荤菜/素菜) and time range
 - Two layouts: cards and gallery
-- Export: generate a PDF from the current list (client-side)
+
 
 ## Tech Stack
 
