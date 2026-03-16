@@ -4,8 +4,6 @@ import { MealCard } from './components/MealCard';
 import { MealForm } from './components/MealForm';
 import { SoupLogo } from './components/SoupLogo';
 import { AnimatePresence, motion } from 'motion/react';
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
 
 interface Meal {
   id: number;
@@ -114,6 +112,14 @@ export default function App() {
     setIsExporting(true);
     
     try {
+      // Lazy-load heavy export libraries so the initial bundle stays small and deployments are faster.
+      const [html2canvasMod, jspdfMod] = await Promise.all([
+        import('html2canvas'),
+        import('jspdf'),
+      ]);
+      const html2canvas = (html2canvasMod as any).default || html2canvasMod;
+      const jsPDF = (jspdfMod as any).jsPDF || (jspdfMod as any).default;
+
       // Wait for a bit to ensure the hidden element is rendered if we were to use one
       // But we'll just use the exportRef which we will add to the DOM hidden
       const element = exportRef.current;

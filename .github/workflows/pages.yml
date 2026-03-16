@@ -4,6 +4,14 @@ on:
   push:
     branches:
       - main
+    # Avoid burning minutes on docs or local-only changes.
+    paths-ignore:
+      - "README.md"
+      - "**/*.md"
+      - ".gitignore"
+      - "miniapp/**"
+      - ".tools/**"
+      - ".chrome-profile/**"
   workflow_dispatch:
 
 permissions:
@@ -26,7 +34,9 @@ jobs:
           node-version: 20
           cache: npm
 
-      - run: npm ci || npm install
+      # `npm ci` is deterministic + faster (uses package-lock.json).
+      # `--no-audit/--no-fund` cuts extra network calls.
+      - run: npm ci --no-audit --no-fund
 
       - run: npm run build
         env:

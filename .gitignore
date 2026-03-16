@@ -2,6 +2,9 @@ node_modules/
 build/
 dist/
 coverage/
+.tools/
+.chrome-profile/
+miniapp/
 .DS_Store
 *.log
 .env*
